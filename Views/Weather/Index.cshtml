@@ -1,0 +1,22 @@
+﻿@model List<CityWeather>
+@{
+    ViewBag.Title = "City Weather Overview";
+
+    // function to change ul background color based on temperature
+    string TempBackground(int temp)
+    {
+        if (temp < 44) return "#0000FF";
+        else if (temp >= 44 && temp <= 74) return "#7FFF00";
+        else return "#FF8C00";
+    }
+}
+
+@foreach (CityWeather city in Model)
+{
+    <ul style="background-color: @TempBackground(city.TemperatureFahrenheit)">
+        <li>@city.CityName</li>
+        <li>@city.DateAndTime.ToString("HH:mm")</li>
+        <li>@city.TemperatureFahrenheit</li>
+        <li><a href="~/weather/@city.CityUniqueCode">Details</a></li>
+    </ul>
+}

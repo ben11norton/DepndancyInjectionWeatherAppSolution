@@ -1,0 +1,15 @@
+﻿@model CityWeather
+@{
+    ViewBag.Title = "City Weather Details";
+    if(Model != null)
+    {
+        ViewBag.Title = Model.CityName + "|" + ViewBag.Title;
+    }
+}
+@if(Model != null)
+{
+    <h1>@Model.CityName Weather Details</h1>
+    <div>@Model.DateAndTime.ToString("dd MMM yyy")</div>
+    <div>@Model.DateAndTime.ToString("HH:mm")</div>
+    <a href="~/">Back to Weather Home Page</a>
+}
